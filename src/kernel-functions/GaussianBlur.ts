@@ -13,7 +13,8 @@ export const GaussianBlur = (
     for (let j = 0; j < size; j++) {
       const x = Math.pow(j - centerX, 2) / (2 * sigmaX * sigmaX);
       const y = Math.pow(i - centery, 2) / (2 * sigmaY * sigmaY);
-      kernel[i].push(aplitude * Math.exp(-(x + y)));
+      const val = aplitude * Math.exp(-(x + y));
+      kernel[i].push(Math.round(val));
     }
   }
 
