@@ -1,7 +1,6 @@
-import { GaussianBlur } from 'kernel-functions/GaussianBlur';
+import { Gaussian } from 'kernel-functions/Gaussian';
 import { useEffect, useState } from 'react';
 import styled from 'styled-components';
-import Kernel from './Kernel';
 
 const Container = styled.div``;
 
@@ -25,20 +24,9 @@ const GaussanKernel = ({ setKernel }: GaussanKernelProps) => {
   const [sigmaY, setSigmaY] = useState('1');
   const [aplitude, setAplitude] = useState('1');
 
-  const [arr, setArray] = useState<number[][]>(
-    GaussianBlur(
-      parseInt(size),
-      parseInt(centerX),
-      parseInt(centerY),
-      parseInt(sigmaX),
-      parseInt(sigmaY),
-      parseInt(aplitude)
-    )
-  );
-
   useEffect(() => {
-    setArray(
-      GaussianBlur(
+    setKernel(
+      Gaussian(
         parseInt(size),
         parseInt(centerX),
         parseInt(centerY),
@@ -47,7 +35,6 @@ const GaussanKernel = ({ setKernel }: GaussanKernelProps) => {
         parseInt(aplitude)
       )
     );
-    setKernel(arr);
   }, [size, centerX, centerY, sigmaX, sigmaY, aplitude]);
 
   return (
@@ -111,8 +98,6 @@ const GaussanKernel = ({ setKernel }: GaussanKernelProps) => {
         value={aplitude}
         onChange={(event) => setAplitude(event.target.value)}
       />
-
-      <Kernel arr={arr} />
     </Container>
   );
 };
