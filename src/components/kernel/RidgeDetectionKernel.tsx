@@ -1,19 +1,19 @@
-import { Sharpening } from 'kernel-functions/Sharpening';
+import { RidgeDetection } from 'kernel-functions/RidgeDetection';
 import { useEffect } from 'react';
 import styled from 'styled-components';
 
 const Container = styled.div``;
 
-interface SharpeningKernelProps {
+interface RidgeDetectionKernel {
   setKernel: React.Dispatch<React.SetStateAction<number[][]>>;
 }
 
-const SharpeningKernel = ({ setKernel }: SharpeningKernelProps) => {
+const RidgeDetectionKernel = ({ setKernel }: RidgeDetectionKernel) => {
   useEffect(() => {
-    setKernel(Sharpening());
+    setKernel(RidgeDetection());
   }, []);
 
   return <Container></Container>;
 };
 
-export default SharpeningKernel;
+export default RidgeDetectionKernel;

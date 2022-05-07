@@ -1,5 +1,6 @@
 import GaussanKernel from 'components/kernel/GaussanKernel';
 import KernelOverview from 'components/kernel/KernelOverview';
+import RidgeDetectionKernel from 'components/kernel/RidgeDetectionKernel';
 import SharpeningKernel from 'components/kernel/SharpeningKernel';
 import React, { useEffect, useRef, useState } from 'react';
 import styled from 'styled-components';
@@ -7,6 +8,7 @@ import styled from 'styled-components';
 enum KernelType {
   GAUSSAN_KERNEL = 'GAUSSAN_KERNEL',
   SHARPENING_KERNEL = 'SHARPENING_KERNEL',
+  RIDGE_DETECTION_KERNEL = 'RIDGE_DETECTION_KERNEL',
 }
 
 const Container = styled.div`
@@ -21,6 +23,7 @@ const ControlPanel = styled.div`
 const ButtonContainer = styled.div`
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
 `;
 
 const ImagePanel = styled.div`
@@ -152,6 +155,8 @@ function App() {
       setKernelComponent(<GaussanKernel setKernel={setKernelArr} />);
     } else if (kernelType === KernelType.SHARPENING_KERNEL) {
       setKernelComponent(<SharpeningKernel setKernel={setKernelArr} />);
+    } else if (kernelType === KernelType.RIDGE_DETECTION_KERNEL) {
+      setKernelComponent(<RidgeDetectionKernel setKernel={setKernelArr} />);
     }
   };
 
